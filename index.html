@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Jamal's Dental Care — Your Smile, Our Priority</title>
+<meta name="description" content="Premium, gentle dental care in a modern clinic. Implants, cosmetic dentistry, orthodontics, and more from Dr. Jamal's Dental Care.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --royal: #0B4EA2;
+    --deep: #1F3F95;
+    --orange: #F7941D;
+    --white: #FFFFFF;
+    --ink: #0A1628;
+    --ink-soft: #4A5568;
+    --bg: #EEF3FB;
+    --line: rgba(11,78,162,0.12);
+    --shadow-soft: 0 20px 60px rgba(11,78,162,0.14);
+    --shadow-lift: 0 30px 80px rgba(11,78,162,0.24);
+    --grad-brand: linear-gradient(120deg, var(--royal) 0%, var(--deep) 50%, var(--orange) 130%);
+    --grad-glow: linear-gradient(135deg, rgba(11,78,162,0.9), rgba(247,148,29,0.85));
+    --radius: 24px;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 700px at 100% 0%, rgba(11,78,162,0.06), transparent 60%),
+      radial-gradient(900px 600px at 0% 100%, rgba(247,148,29,0.06), transparent 55%),
+      var(--bg);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ text-decoration:none; color:inherit; }
+  ul{ list-style:none; }
+  .container{ width:100%; max-width:1240px; margin:0 auto; padding:0 24px; }
+  h1,h2,h3,h4{ font-family:'Poppins', sans-serif; font-weight:700; line-height:1.15; letter-spacing:-0.01em; }
+  .eyebrow{
+    font-family:'Manrope', sans-serif; font-weight:700; font-size:13px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--orange); display:inline-flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:''; width:22px; height:2px; background:var(--orange); border-radius:2px; display:inline-block; }
+  .section{ padding:120px 0; position:relative; }
+  #treatments{ background:linear-gradient(180deg,#fff,#EEF3FB 100%); }
+  #solutions{
+    background:linear-gradient(135deg,#0B1E44 0%, #0B4EA2 55%, #1F3F95 100%);
+    position:relative; overflow:hidden;
+  }
+  #solutions::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(600px 320px at 10% 15%, rgba(247,148,29,0.16), transparent 60%),
+               radial-gradient(500px 320px at 90% 85%, rgba(255,255,255,0.08), transparent 60%);
+  }
+  #solutions .container{ position:relative; z-index:1; }
+  #solutions .section-head h2{ color:#fff; }
+  #solutions .section-head p{ color:rgba(255,255,255,0.7); }
+  #solutions .sol-tagline{ color:var(--orange); }
+  #solutions .eyebrow{ color:var(--orange); }
+  #solutions .sol-item h3{ color:#fff; }
+  #solutions .sol-item p{ color:rgba(255,255,255,0.65); }
+  #solutions .sol-item + .sol-item::before{ background:rgba(255,255,255,0.14); }
+  #solutions .sol-icon{ background:linear-gradient(135deg, rgba(247,148,29,0.9), rgba(255,255,255,0.15)); border:1px solid rgba(255,255,255,0.35); box-shadow:0 14px 34px rgba(0,0,0,0.25); }
+  #solutions .cta-banner{ display:none; }
+  .section-head{ max-width:640px; margin-bottom:64px; }
+  .section-head h2{ font-size:clamp(30px,4vw,44px); margin-top:14px; }
+  .section-head p{ margin-top:16px; font-size:17px; color:var(--ink-soft); line-height:1.7; }
+  .center{ text-align:center; margin-left:auto; margin-right:auto; }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    font-family:'Manrope', sans-serif; font-weight:700; font-size:15px;
+    padding:16px 30px; border-radius:100px; border:none; cursor:pointer;
+    position:relative; overflow:hidden; transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+    white-space:nowrap;
+  }
+  .btn:active{ transform:scale(0.97); }
+  .btn-primary{ background:var(--grad-brand); color:#fff; box-shadow:0 14px 34px rgba(11,78,162,0.35); }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 20px 44px rgba(247,148,29,0.35); }
+  .btn-ghost{ background:#fff; color:var(--royal); border:1.5px solid var(--line); }
+  .btn-ghost:hover{ transform:translateY(-3px); border-color:var(--royal); box-shadow:var(--shadow-soft); }
+  .btn .ripple{
+    position:absolute; border-radius:50%; background:rgba(255,255,255,0.5); transform:scale(0);
+    animation:ripple .6s linear; pointer-events:none;
+  }
+  @keyframes ripple{ to{ transform:scale(3); opacity:0; } }
+
+  /* NAVBAR */
+  header{
+    position:fixed; top:0; left:0; width:100%; z-index:1000;
+    padding:22px 0; transition:padding .4s ease;
+  }
+  header .container{ display:flex; align-items:center; justify-content:space-between; }
+  .nav-glass{
+    position:relative; overflow:hidden;
+    background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.78));
+    backdrop-filter:blur(22px); -webkit-backdrop-filter:blur(22px);
+    border-radius:100px;
+    border:1px solid rgba(255,255,255,0.6);
+    box-shadow:0 10px 40px rgba(11,78,162,0.14), 0 1px 0 rgba(255,255,255,0.8) inset;
+    padding:10px 12px 10px 22px;
+    transition:box-shadow .4s ease, padding .4s ease, background-color .4s ease;
+  }
+  /* mouse-follow spotlight */
+  .nav-glass::after{
+    content:''; position:absolute; inset:0; border-radius:inherit; z-index:0; pointer-events:none;
+    background:radial-gradient(180px 180px at var(--mx,50%) var(--my,0%), rgba(11,78,162,0.22), rgba(247,148,29,0.10) 45%, transparent 72%);
+    opacity:0; transition:opacity .35s ease;
+  }
+  .nav-glass:hover::after{ opacity:1; }
+  /* always-on animated aurora background */
+  .nav-glass .nav-aurora{
+    position:absolute; inset:-40% -10%; z-index:0; pointer-events:none; opacity:0.55;
+    background:
+      radial-gradient(160px 90px at 12% 50%, rgba(11,78,162,0.30), transparent 70%),
+      radial-gradient(180px 100px at 55% 50%, rgba(247,148,29,0.22), transparent 70%),
+      radial-gradient(160px 90px at 90% 50%, rgba(31,63,149,0.28), transparent 70%);
+    background-size:200% 200%;
+    animation:auroraDrift 9s ease-in-out infinite;
+    filter:blur(6px);
+  }
+  @keyframes auroraDrift{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+  }
+  .nav-glass::before{
+    content:''; position:absolute; inset:0; border-radius:inherit; padding:1px; z-index:1;
+    background:linear-gradient(120deg, rgba(11,78,162,0.35), rgba(247,148,29,0.35), rgba(11,78,162,0.1));
+    background-size:220% 220%;
+    animation:navBorderFlow 6s ease infinite;
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude;
+    opacity:0.55; transition:opacity .4s ease; pointer-events:none;
+  }
+  .nav-glass:hover::before{ opacity:1; }
+  @keyframes navBorderFlow{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+  }
+  .nav-glass > *{ position:relative; z-index:2; }
+  header.scrolled .nav-glass{ box-shadow:0 14px 46px rgba(11,78,162,0.20), 0 1px 0 rgba(255,255,255,0.8) inset; }
+  .logo{ display:flex; align-items:center; gap:10px; font-family:'Poppins'; font-weight:700; font-size:19px; color:var(--royal); }
+  .logo-mark{
+    width:46px; height:46px; border-radius:13px; background:#fff;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(11,78,162,0.18);
+    padding:5px; flex:0 0 auto; transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s;
+  }
+  .logo:hover .logo-mark{ transform:rotate(-6deg) scale(1.06); box-shadow:0 12px 28px rgba(247,148,29,0.30); }
+  .logo-mark img{ width:100%; height:100%; object-fit:contain; }
+  .nav-links{ display:flex; align-items:center; gap:8px; }
+  .nav-links a:not(.btn){
+    font-family:'Manrope'; font-weight:600; font-size:14.5px; color:var(--ink); position:relative;
+    padding:10px 16px; border-radius:100px; transition:color .3s ease, background .3s ease;
+  }
+  .nav-links a:not(.btn)::after{
+    content:''; position:absolute; bottom:6px; left:16px; right:16px; height:2px; background:var(--orange);
+    transform:scaleX(0); transform-origin:center; transition:transform .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .nav-links a:not(.btn):hover{ color:var(--royal); background:rgba(11,78,162,0.06); }
+  .nav-links a:not(.btn):hover::after{ transform:scaleX(1); }
+  .nav-links .btn-primary{
+    background:linear-gradient(115deg, var(--royal) 0%, var(--deep) 55%, var(--orange) 145%);
+    padding:13px 26px; font-size:14.5px; margin-left:8px;
+  }
+  .nav-cta{ display:flex; align-items:center; gap:24px; }
+  .burger{ display:none; width:26px; height:20px; position:relative; cursor:pointer; }
+  .burger span{ position:absolute; left:0; width:100%; height:2px; background:var(--royal); border-radius:2px; transition:all .3s; }
+  .burger span:nth-child(1){ top:0; } .burger span:nth-child(2){ top:9px; } .burger span:nth-child(3){ top:18px; }
+
+  /* HERO */
+  .hero{
+    min-height:100vh; display:flex; align-items:center; position:relative; padding-top:120px; padding-bottom:60px;
+    background:
+      radial-gradient(ellipse 800px 500px at 15% 20%, rgba(11,78,162,0.06), transparent),
+      radial-gradient(ellipse 700px 500px at 90% 80%, rgba(247,148,29,0.08), transparent);
+    overflow:hidden;
+  }
+  .hero .container{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center; }
+  .hero-copy h1{
+    font-size:clamp(40px, 5.2vw, 68px); color:var(--ink);
+  }
+  .hero-copy h1 .grad{
+    background:var(--grad-brand); -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-copy p{ margin-top:22px; font-size:18px; color:var(--ink-soft); max-width:480px; line-height:1.75; }
+  .hero-actions{ margin-top:38px; display:flex; gap:18px; flex-wrap:wrap; }
+  .hero-trust{ margin-top:44px; display:flex; align-items:center; gap:18px; }
+  .hero-trust .avatars{ display:flex; }
+  .hero-trust .avatars span{
+    width:38px; height:38px; border-radius:50%; border:3px solid #fff; margin-left:-12px;
+    background:var(--grad-brand); display:flex; align-items:center; justify-content:center;
+    font-family:'Poppins'; font-size:12px; color:#fff; font-weight:700;
+  }
+  .hero-trust .avatars span:first-child{ margin-left:0; }
+  .hero-trust p{ margin:0; font-size:14px; color:var(--ink-soft); font-weight:600; }
+  .hero-trust strong{ color:var(--ink); }
+
+  .hero-visual{ position:relative; display:flex; justify-content:center; align-items:center; height:560px; }
+  .blob{ position:absolute; border-radius:50%; filter:blur(2px); opacity:0.55; }
+  .blob-1{ width:340px; height:340px; background:radial-gradient(circle,rgba(11,78,162,0.35),transparent 70%); top:-20px; left:0; }
+  .blob-2{ width:300px; height:300px; background:radial-gradient(circle,rgba(247,148,29,0.35),transparent 70%); bottom:-40px; right:0; }
+  .smile-arc{ position:absolute; width:480px; height:480px; }
+  .patient-photo-wrap{
+    position:relative; width:340px; height:440px; border-radius:36px; overflow:hidden;
+    box-shadow:var(--shadow-lift); border:6px solid #fff; z-index:3;
+  }
+  .patient-photo-wrap img{ width:100%; height:100%; object-fit:cover; }
+  .float-icon{
+    position:absolute; width:64px; height:64px; border-radius:18px; background:#fff;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 16px 40px rgba(11,78,162,0.22);
+    z-index:4;
+  }
+  .float-icon svg{ width:28px; height:28px; }
+  .fi-1{ top:8%; left:2%; }
+  .fi-2{ top:60%; left:-6%; }
+  .fi-3{ top:14%; right:0%; }
+  .fi-4{ bottom:4%; right:6%; }
+  .rating-chip{
+    position:absolute; bottom:26px; left:-30px; background:#fff; border-radius:20px; padding:14px 20px;
+    box-shadow:var(--shadow-lift); display:flex; align-items:center; gap:12px; z-index:5;
+  }
+  .rating-chip .stars{ color:var(--orange); font-size:14px; letter-spacing:2px; }
+  .rating-chip strong{ font-family:'Poppins'; font-size:20px; display:block; }
+  .rating-chip span{ font-size:12px; color:var(--ink-soft); }
+
+  /* STATS */
+  .stats{
+    background:linear-gradient(120deg,#0B1E44 0%, #12285C 45%, #0B4EA2 100%);
+    padding:80px 0; position:relative; overflow:hidden;
+  }
+  .stats::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(600px 300px at 15% 20%, rgba(247,148,29,0.18), transparent 60%),
+               radial-gradient(500px 300px at 85% 80%, rgba(255,255,255,0.08), transparent 60%);
+  }
+  .stats .container{ position:relative; z-index:1; }
+  .stat-num{ font-family:'Poppins'; font-weight:800; font-size:clamp(32px,4vw,46px); color:#fff; -webkit-text-fill-color:#fff; }
+  .stat-label{ margin-top:10px; font-family:'Manrope'; font-weight:600; color:rgba(255,255,255,0.65); font-size:15px; }
+  .stats-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:30px; }
+  .stat-card{ text-align:center; padding:20px; position:relative; }
+  .stat-card + .stat-card::before{ content:''; position:absolute; left:0; top:10px; bottom:10px; width:1px; background:rgba(255,255,255,0.14); }
+
+  /* TREATMENTS */
+  .treat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .treat-card{
+    background:#fff; border-radius:var(--radius); padding:36px 30px; border:1px solid var(--line);
+    box-shadow:var(--shadow-soft); transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s; position:relative; overflow:hidden;
+  }
+  .treat-card::after{
+    content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--grad-brand);
+    transform:scaleX(0); transform-origin:left; transition:transform .5s ease; z-index:2;
+  }
+  .treat-card:hover::after{ transform:scaleX(1); }
+  .treat-card::before{
+    content:''; position:absolute; inset:0; opacity:0; background:var(--grad-brand); transition:opacity .4s; z-index:0;
+  }
+  .treat-card:hover{ transform:translateY(-10px); box-shadow:var(--shadow-lift); }
+  .treat-card > *{ position:relative; z-index:1; }
+  .treat-icon{
+    width:60px; height:60px; border-radius:16px; background:linear-gradient(135deg,rgba(11,78,162,0.08),rgba(247,148,29,0.10));
+    display:flex; align-items:center; justify-content:center; margin-bottom:22px; transition:transform .4s;
+  }
+  .treat-card:hover .treat-icon{ transform:scale(1.08) rotate(-4deg); }
+  .treat-icon svg{ width:28px; height:28px; }
+  .treat-card h3{ font-size:20px; margin-bottom:10px; }
+  .treat-card p{ font-size:15px; color:var(--ink-soft); line-height:1.65; }
+  .treat-link{ margin-top:18px; display:inline-flex; align-items:center; gap:6px; font-family:'Manrope'; font-weight:700; font-size:14px; color:var(--royal); }
+
+  /* WHY CHOOSE */
+  .why{ background:linear-gradient(180deg,#0B1E44 0%, #12285C 60%, #0B4EA2 100%); color:#fff; }
+  .why .section-head p{ color:rgba(255,255,255,0.7); }
+  .why .eyebrow{ color:var(--orange); }
+  .why-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  .why-card{
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius);
+    padding:34px 28px; backdrop-filter:blur(10px); transition:transform .4s, background .4s;
+  }
+  .why-card:hover{ transform:translateY(-8px); background:rgba(255,255,255,0.1); }
+  .why-icon{
+    width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center;
+    background:var(--grad-brand); margin-bottom:20px; box-shadow:0 12px 30px rgba(247,148,29,0.25);
+  }
+  .why-icon svg{ width:26px; height:26px; color:#fff; }
+  .why-card h3{ font-size:19px; margin-bottom:10px; color:#fff; }
+  .why-card p{ font-size:14.5px; color:rgba(255,255,255,0.65); line-height:1.65; }
+
+  /* REVIEWS */
+  .reviews{ background:var(--bg); overflow:hidden; }
+  .google-badge{ display:flex; align-items:center; gap:14px; justify-content:center; margin-bottom:10px; }
+  .google-badge img{ height:22px; }
+  .review-track-wrap{ position:relative; margin-top:50px; }
+  .review-track-wrap::before, .review-track-wrap::after{
+    content:''; position:absolute; top:0; bottom:0; width:120px; z-index:2; pointer-events:none;
+  }
+  .review-track-wrap::before{ left:0; background:linear-gradient(90deg,var(--bg),transparent); }
+  .review-track-wrap::after{ right:0; background:linear-gradient(270deg,var(--bg),transparent); }
+  .review-track{ display:flex; gap:26px; width:max-content; animation:scrollTrack 42s linear infinite; }
+  .review-track-wrap:hover .review-track{ animation-play-state:paused; }
+  @keyframes scrollTrack{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+  .review-card{
+    width:360px; flex:0 0 auto; border-radius:22px; padding:28px 26px; background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid rgba(11,78,162,0.10);
+    box-shadow:var(--shadow-soft); transition:transform .35s, box-shadow .35s;
+  }
+  .review-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lift); }
+  .review-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .review-who{ display:flex; align-items:center; gap:12px; }
+  .review-avatar{
+    width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:'Poppins'; font-weight:700; font-size:16px; color:#fff; flex:0 0 auto;
+  }
+  .review-name{ font-family:'Manrope'; font-weight:700; font-size:15px; color:var(--ink); display:flex; align-items:center; gap:6px; }
+  .review-time{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+  .review-google{ width:20px; height:20px; flex:0 0 auto; }
+  .review-stars{ color:var(--orange); font-size:14px; letter-spacing:2px; margin-bottom:12px; }
+  .verified-tick{
+    width:15px; height:15px; border-radius:50%; background:#1F6FEB; display:inline-flex; align-items:center;
+    justify-content:center;
+  }
+  .verified-tick svg{ width:9px; height:9px; }
+  .review-text{ font-size:14.5px; line-height:1.7; color:var(--ink-soft); }
+
+  /* CTA BANNER */
+  .cta-banner{
+    position:relative; margin:0 auto; border-radius:36px; overflow:hidden; padding:80px 60px;
+    background:var(--grad-brand); text-align:center; isolation:isolate;
+  }
+  .cta-banner::before, .cta-banner::after{
+    content:''; position:absolute; border-radius:50%; background:rgba(255,255,255,0.12); z-index:-1;
+  }
+  .cta-banner::before{ width:260px; height:260px; top:-100px; left:-60px; }
+  .cta-banner::after{ width:220px; height:220px; bottom:-90px; right:-40px; }
+  .cta-banner h2{ color:#fff; font-size:clamp(30px,4vw,44px); }
+  .cta-banner p{ color:rgba(255,255,255,0.85); margin-top:16px; font-size:17px; max-width:520px; margin-inline:auto; }
+  .cta-banner .btn-primary{ margin-top:32px; background:#fff; color:var(--royal); box-shadow:0 16px 40px rgba(0,0,0,0.2); }
+  .cta-banner .btn-primary:hover{ box-shadow:0 20px 50px rgba(0,0,0,0.28); }
+  .cta-float{ position:absolute; opacity:0.5; }
+
+  /* FOOTER */
+  footer{ background:#0B1E44; color:rgba(255,255,255,0.8); padding:70px 0 30px; }
+  .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px; }
+  .footer-logo{ display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+  .footer-logo .logo-mark{ width:40px; height:40px; }
+  .footer-logo span{ font-family:'Poppins'; font-weight:700; color:#fff; font-size:18px; }
+  footer p{ font-size:14.5px; line-height:1.7; color:rgba(255,255,255,0.55); max-width:280px; }
+  footer h4{ color:#fff; font-size:15px; margin-bottom:18px; font-family:'Manrope'; }
+  footer ul li{ margin-bottom:12px; }
+  footer ul li a{ font-size:14.5px; color:rgba(255,255,255,0.6); transition:color .3s; }
+  footer ul li a:hover{ color:var(--orange); }
+  .social-row{ display:flex; gap:12px; margin-top:18px; }
+  .social-row a{
+    width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,0.08); display:flex;
+    align-items:center; justify-content:center; transition:background .3s, transform .3s;
+  }
+  .social-row a:hover{ background:var(--orange); transform:translateY(-3px); }
+  .social-row svg{ width:16px; height:16px; color:#fff; }
+  .footer-bottom{
+    margin-top:56px; padding-top:26px; border-top:1px solid rgba(255,255,255,0.1); display:flex;
+    justify-content:space-between; align-items:center; font-size:13.5px; color:rgba(255,255,255,0.45); flex-wrap:wrap; gap:10px;
+  }
+
+  /* SOLUTIONS */
+  .solutions{ background:#fff; }
+  .sol-tagline{ text-align:center; font-family:'Manrope'; font-weight:700; font-size:13px; letter-spacing:0.08em;
+    color:var(--royal); margin-top:10px; }
+  .sol-grid{ display:grid; grid-template-columns:repeat(3,1fr); margin-top:56px; position:relative; }
+  .sol-item{ text-align:center; padding:0 36px; position:relative; }
+  .sol-item + .sol-item::before{
+    content:''; position:absolute; left:0; top:10px; bottom:10px; width:1px; background:var(--line);
+  }
+  .sol-icon{
+    width:78px; height:78px; margin:0 auto 22px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:var(--grad-brand); box-shadow:0 14px 34px rgba(11,78,162,0.22); transition:transform .4s;
+  }
+  .sol-item:hover .sol-icon{ transform:scale(1.08) rotate(-6deg); }
+  .sol-icon svg{ width:32px; height:32px; }
+  .sol-item h3{ font-size:18px; margin-bottom:12px; }
+  .sol-item p{ font-size:14.5px; color:var(--ink-soft); line-height:1.7; }
+  .sol-cta{ text-align:center; margin-top:56px; }
+
+  /* DENTAL EXPERTS */
+  .experts{ background:linear-gradient(180deg,#F6F9FD,#fff); }
+  .experts-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:40px 28px; margin-top:60px; }
+  .expert-card{ text-align:center; }
+  .expert-photo{
+    width:150px; height:150px; border-radius:50%; margin:0 auto 20px; position:relative;
+    box-shadow:var(--shadow-soft); border:5px solid #fff; transition:transform .4s, box-shadow .4s;
+    overflow:hidden; background:#EEF3FB;
+  }
+  .expert-photo img{ width:100%; height:100%; object-fit:cover; border-radius:50%; }
+  .expert-card:hover .expert-photo{ transform:translateY(-8px); box-shadow:var(--shadow-lift); }
+  .expert-photo::after{
+    content:''; position:absolute; inset:-5px; border-radius:50%; border:2px dashed rgba(247,148,29,0.4);
+  }
+  .expert-name{ font-family:'Manrope'; font-weight:700; font-size:14.5px; color:var(--royal); text-transform:uppercase; letter-spacing:0.01em; }
+  .expert-cred{ font-size:12px; color:var(--ink-soft); margin-top:6px; line-height:1.5; padding:0 8px; }
+  .expert-role{ font-size:11.5px; color:var(--orange); font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-top:4px; }
+
+  [data-animate]{ opacity:0; }
+
+  @media (max-width:1100px){
+    .container{ padding:0 20px; }
+  }
+  @media (max-width:1024px){
+    .stats-grid{ grid-template-columns:repeat(2,1fr); }
+    .stat-card + .stat-card::before{ display:none; }
+    .treat-grid{ grid-template-columns:repeat(2,1fr); }
+    .why-grid{ grid-template-columns:repeat(2,1fr); }
+    .experts-grid{ grid-template-columns:repeat(3,1fr); }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+    .hero .container{ grid-template-columns:1fr; }
+    .hero-visual{ height:440px; margin-top:20px; }
+    .sol-grid{ grid-template-columns:1fr; gap:40px; }
+    .sol-item + .sol-item::before{ display:none; }
+  }
+  @media (max-width:900px){
+    .section{ padding:96px 0; }
+    .experts-grid{ grid-template-columns:repeat(2,1fr); gap:36px 22px; }
+    .review-card{ width:320px; }
+  }
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; top:0; right:-100%; width:78%; height:100vh; background:#fff; flex-direction:column;
+      justify-content:center; gap:32px; transition:right .4s ease; box-shadow:-10px 0 40px rgba(0,0,0,0.1);
+    }
+    .nav-links.open{ right:0; }
+    .burger{ display:block; z-index:1001; }
+    .stats-grid{ grid-template-columns:repeat(2,1fr); gap:20px; }
+    .treat-grid{ grid-template-columns:1fr; }
+    .why-grid{ grid-template-columns:1fr; }
+    .experts-grid{ grid-template-columns:1fr 1fr; gap:30px 16px; }
+    .footer-grid{ grid-template-columns:1fr; }
+    .section{ padding:76px 0; }
+    .cta-banner{ padding:60px 28px; }
+    .review-card{ width:300px; }
+    .rating-chip{ left:0; }
+    .hero-copy h1{ font-size:clamp(34px,8vw,48px); }
+  }
+  @media (max-width:520px){
+    .experts-grid{ grid-template-columns:1fr; }
+    .expert-photo{ width:130px; height:130px; }
+    .hero-actions{ flex-direction:column; align-items:stretch; }
+    .hero-actions .btn{ width:100%; }
+    .hero-trust{ flex-wrap:wrap; }
+    .stats-grid{ grid-template-columns:1fr 1fr; }
+    .cta-banner h2{ font-size:26px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="container nav-glass" id="navGlass">
+    <div class="nav-aurora"></div>
+    <div class="logo">
+      <span class="logo-mark">
+        <img src="./ChatGPT Image Jul 23, 2026, 12_16_37 AM.png" alt="Dr. Jamal's Dental Care logo" loading="lazy">
+      </span>
+      Dr. Jamal's <span style="color:var(--orange)">Dental</span> Care
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#treatments">Treatments</a>
+      <a href="#experts">Our Experts</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#book" class="btn btn-primary" onclick="ripple(event)">Book Appointment</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-copy">
+      <span class="eyebrow" data-animate data-anim="up">Premium Dental Care · Est. Trust</span>
+      <h1 data-animate data-anim="up">Your Smile,<br><span class="grad">Our Priority</span></h1>
+      <p data-animate data-anim="up">Dr. Jamal's Dental Care blends advanced technology with a gentle, personal touch — so every visit feels calm, confident, and genuinely cared for.</p>
+      <div class="hero-actions" data-animate data-anim="up">
+        <a href="#book" class="btn btn-primary" onclick="ripple(event)">Book Appointment</a>
+        <a href="#treatments" class="btn btn-ghost" onclick="ripple(event)">View Treatments</a>
+      </div>
+      <div class="hero-trust" data-animate data-anim="up">
+        <div class="avatars">
+          <span>A</span><span>S</span><span>M</span><span>Z</span>
+        </div>
+        <p><strong>10,000+</strong> patients trust our care</p>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="blob blob-1" data-parallax="0.4"></div>
+      <div class="blob blob-2" data-parallax="-0.3"></div>
+      <svg class="smile-arc" viewBox="0 0 480 480" data-parallax="0.15">
+        <defs>
+          <linearGradient id="arcGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0B4EA2"/><stop offset="100%" stop-color="#F7941D"/>
+          </linearGradient>
+        </defs>
+        <circle cx="240" cy="240" r="220" fill="none" stroke="url(#arcGrad)" stroke-width="1.4" stroke-dasharray="4 10" opacity="0.5"/>
+      </svg>
+      <div class="patient-photo-wrap" data-animate data-anim="scale">
+        <img src="Dr-Jamal-H-Memon-Dentist.png.bv.webp" alt="Smiling dental patient" loading="lazy">
+      </div>
+      <div class="float-icon fi-1" data-float>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3c-2.2 0-4 1.6-4 4.2 0 2.6.9 3.8.9 6.4 0 2-1 3.9-1 5.4 0 1.1.6 2 1.6 2 1.7 0 1.5-3.8 2.5-3.8s.8 3.8 2.5 3.8c1 0 1.6-.9 1.6-2 0-1.5-1-3.4-1-5.4 0-2.6.9-3.8.9-6.4C16 4.6 14.2 3 12 3z" stroke="#0B4EA2" stroke-width="1.6"/></svg>
+      </div>
+      <div class="float-icon fi-2" data-float>
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#F7941D" stroke-width="1.6"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="#F7941D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="float-icon fi-3" data-float>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 8l8-4 8 4M4 8v8l8 4 8-4V8M4 8l8 4 8-4" stroke="#0B4EA2" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="float-icon fi-4" data-float>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-9.5-8.9C.8 8.4 2.5 4.5 6.3 4.1c2-.2 3.6 1 5.7 3 2.1-2 3.7-3.2 5.7-3 3.8.4 5.5 4.3 3.8 8-2.5 4.55-9.5 8.9-9.5 8.9z" stroke="#F7941D" stroke-width="1.4"/></svg>
+      </div>
+      <div class="rating-chip" data-animate data-anim="up">
+        <div>
+          <div class="stars">★★★★★</div>
+          <strong>4.9/5</strong>
+          <span>527+ Google reviews</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container stats-grid">
+    <div class="stat-card" data-animate data-anim="up">
+      <div class="stat-num" data-count="10000" data-suffix="+">0</div>
+      <div class="stat-label">Happy Patients</div>
+    </div>
+    <div class="stat-card" data-animate data-anim="up">
+      <div class="stat-num" data-count="15" data-suffix="+">0</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-card" data-animate data-anim="up">
+      <div class="stat-num" data-count="25" data-suffix="+">0</div>
+      <div class="stat-label">Dental Procedures</div>
+    </div>
+    <div class="stat-card" data-animate data-anim="up">
+      <div class="stat-num" data-count="4.9" data-decimal="1" data-suffix="★">0</div>
+      <div class="stat-label">Patient Rating</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="treatments">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">What We Offer</span>
+      <h2>Featured Treatments</h2>
+      <p>Comprehensive, modern dentistry designed around comfort — from everyday care to complete smile transformations.</p>
+    </div>
+    <div class="treat-grid">
+      <div class="treat-card" data-animate data-anim="up">
+        <div class="treat-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v6M9 5h6M8 11h8l-1 9-3 2-3-2-1-9z" stroke="#0B4EA2" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>Dental Implants</h3>
+        <p>Durable, natural-looking implants that restore full function and confidence to your smile.</p>
+        <span class="treat-link">Learn more →</span>
+      </div>
+      <div class="treat-card" data-animate data-anim="up">
+        <div class="treat-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15c2-1.5 4-2 8-2s6 .5 8 2M6 8c0-2 3-4 6-4s6 2 6 4-1 3-1 5 1 4-2 4-2-3-4-3-1 3-4 3-2-2-2-4 1-3 1-5z" stroke="#F7941D" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>Cosmetic Dentistry</h3>
+        <p>Veneers, bonding, and smile design crafted to give you a naturally beautiful, radiant smile.</p>
+        <span class="treat-link">Learn more →</span>
+      </div>
+      <div class="treat-card" data-animate data-anim="up">
+        <div class="treat-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M4 12l8 8M12 4l8 8" stroke="#0B4EA2" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Teeth Whitening</h3>
+        <p>Safe, fast professional whitening treatments for a visibly brighter smile in one visit.</p>
+        <span class="treat-link">Learn more →</span>
+      </div>
+      <div class="treat-card" data-animate data-anim="up">
+        <div class="treat-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12a7 7 0 0114 0M5 12v3a2 2 0 002 2h1v-4H5zm14 0v3a2 2 0 01-2 2h-1v-4h3z" stroke="#F7941D" stroke-width="1.6"/></svg></div>
+        <h3>Orthodontics</h3>
+        <p>Braces and clear aligners that gently guide your teeth into their ideal, healthy position.</p>
+        <span class="treat-link">Learn more →</span>
+      </div>
+      <div class="treat-card" data-animate data-anim="up">
+        <div class="treat-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v16M6 8h12M6 16h12" stroke="#0B4EA2" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Root Canal Treatment</h3>
+        <p>Pain-free, precise root canal therapy that saves your natural tooth and relieves discomfort.</p>
+        <span class="treat-link">Learn more →</span>
+      </div>
+      <div class="treat-card" data-animate data-anim="up">
+        <div class="treat-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 10c2-4 6-6 8-6s6 2 8 6c-2 4-6 6-8 6s-6-2-8-6z" stroke="#F7941D" stroke-width="1.6"/><circle cx="12" cy="10" r="2" stroke="#F7941D" stroke-width="1.6"/></svg></div>
+        <h3>Gum Care</h3>
+        <p>Thorough periodontal treatment and hygiene care to keep your gums healthy long-term.</p>
+        <span class="treat-link">Learn more →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section solutions" id="solutions">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Comprehensive Care</span>
+      <h2>Complete Dental Care Solutions According to Your Needs</h2>
+      <p class="sol-tagline">Bringing Life to Your Smile</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-item" data-animate data-anim="up">
+        <div class="sol-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="#fff" stroke-width="1.6"/><path d="M5 21c0-4 3-6.5 7-6.5s7 2.5 7 6.5" stroke="#fff" stroke-width="1.6"/></svg></div>
+        <h3>Experienced Dentist</h3>
+        <p>Our highly qualified dentists with countless hours of professional experience look after you at Dr. Jamal's Dental Care.</p>
+      </div>
+      <div class="sol-item" data-animate data-anim="up">
+        <div class="sol-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12a7 7 0 0114 0M5 12v3a2 2 0 002 2h1v-4H5zm14 0v3a2 2 0 01-2 2h-1v-4h3z" stroke="#fff" stroke-width="1.6"/></svg></div>
+        <h3>Advance Treatment</h3>
+        <p>There's no need to be self-conscious about smiling or eating; our dental experts can help restore your smile.</p>
+      </div>
+      <div class="sol-item" data-animate data-anim="up">
+        <div class="sol-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="#fff" stroke-width="1.6"/><path d="M8 12h8M12 8v8" stroke="#fff" stroke-width="1.6"/></svg></div>
+        <h3>Modern Equipment</h3>
+        <p>Whatever your plan, our state-of-the-art equipment makes it simple for our team to implement.</p>
+      </div>
+    </div>
+    <div class="sol-cta" data-animate data-anim="up">
+      <a href="#treatments" class="btn btn-primary" style="background:#fff; color:var(--royal); box-shadow:0 16px 40px rgba(0,0,0,0.25);" onclick="ripple(event)">Visit Our Services</a>
+    </div>
+  </div>
+</section>
+
+<section class="section experts" id="experts">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Meet The Team</span>
+      <h2>Our Dental Experts</h2>
+      <p>Dr. Jamal's experienced dental team includes male and female dentists who specialize in various dental procedures and are aligned with our "customers first" mindset. Patients may request a female dentist when booking appointments to ensure comfort for those who prefer a lady dentist — just let us know your preference while booking and ask for a female dentist.</p>
+    </div>
+    <div class="experts-grid">
+      <div class="expert-card" data-animate data-anim="up">
+        <div class="expert-photo">
+          <img src="Dr.-Aatif-Mohammad-Haroon-B.D.S.-F.C.P.S.OMFS-Oral-Maxillofacial-Surgeon.webp.bv.webp" alt="Dr. Aatif Mohammad Haroon" loading="lazy">
+        </div>
+        <div class="expert-name">Dr. Aatif Mohammad Haroon</div>
+        <div class="expert-cred">B.D.S., F.C.P.S.(OMFS)</div>
+        <div class="expert-role">Oral & Maxillofacial Surgeon</div>
+      </div>
+      <div class="expert-card" data-animate data-anim="up">
+        <div class="expert-photo">
+          <img src="Dr-Jamal-H-Memon-Dentist.png.bv.webp" alt="Dr. Jamal H. Memon" loading="lazy">
+        </div>
+        <div class="expert-name">Dr. Jamal H. Memon</div>
+        <div class="expert-cred">B.D.S., Implant Dentistry, Ortho, M.Sc.D.S Trained (Prosthodontics)</div>
+        <div class="expert-role">Cosmetic Dentist & Implantologist</div>
+      </div>
+      <div class="expert-card" data-animate data-anim="up">
+        <div class="expert-photo">
+          <img src="Dr.-Hafiz-Mujtaba-Hussain-B.D.S.-F.C.P.S.-Trained-OMFS-Maxillofacial-Surgeon.webp.bv.webp" alt="Dr. Hafiz Mujtaba Hussain" loading="lazy">
+        </div>
+        <div class="expert-name">Dr. Hafiz Mujtaba Hussain</div>
+        <div class="expert-cred">B.D.S., F.C.P.S Trained (OMFS)</div>
+        <div class="expert-role">Maxillofacial Surgeon</div>
+      </div>
+      <div class="expert-card" data-animate data-anim="up">
+        <div class="expert-photo">
+          <img src="Dr.-Bismah-Mir-B.D.S.-Associate-Dentist-Manager.webp.bv.webp" alt="Dr. Bismah Mir" loading="lazy">
+        </div>
+        <div class="expert-name">Dr. Bismah Mir</div>
+        <div class="expert-cred">B.D.S.</div>
+        <div class="expert-role">Associate Dentist & Manager</div>
+      </div>
+      <div class="expert-card" data-animate data-anim="up">
+        <div class="expert-photo">
+          <img src="Dr.-Saad-Maroof-Lakhani-B.D.S.-F.C.P.S.-Trained-Operative-Dentistry-Consultant-Endoddontist.webp.bv.webp" alt="Dr. Saad Maroof Lakhani" loading="lazy">
+        </div>
+        <div class="expert-name">Dr. Saad Maroof Lakhani</div>
+        <div class="expert-cred">B.D.S., F.C.P.S Trained (Operative Dentistry)</div>
+        <div class="expert-role">Consultant Endodontist</div>
+      </div>
+      <div class="expert-card" data-animate data-anim="up">
+        <div class="expert-photo">
+          <img src="Dr.-Rida-Rafique-B.D.S.-Associate-Dentist.webp.bv.webp" alt="Dr. Rida Rafique" loading="lazy">
+        </div>
+        <div class="expert-name">Dr. Rida Rafique</div>
+        <div class="expert-cred">B.D.S.</div>
+        <div class="expert-role">Associate Dentist</div>
+      </div>
+      <div class="expert-card" data-animate data-anim="up">
+        <div class="expert-photo">
+          <img src="Dr.-Muteeb-Adil-B.D.S.-R.D.S.-DOW.jpg.bv.webp" alt="Dr. Muteeb Adil" loading="lazy">
+        </div>
+        <div class="expert-name">Dr. Muteeb Adil</div>
+        <div class="expert-cred">B.D.S., R.D.S (DOW)</div>
+        <div class="expert-role">Associate Dentist</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section why" id="why-us">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">The Difference</span>
+      <h2>Why Choose Dr. Jamal's Dental Care</h2>
+      <p>A clinic built around precision, comfort, and genuine care — every single visit.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card" data-animate data-anim="up">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 2l2.6 5.3 5.9.8-4.3 4.1 1 5.8L12 15l-5.2 2.7 1-5.8-4.3-4.1 5.9-.8L12 2z"/></svg></div>
+        <h3>Experienced Dentists</h3>
+        <p>Years of specialized training and thousands of successful procedures behind every treatment.</p>
+      </div>
+      <div class="why-card" data-animate data-anim="up">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <h3>Latest Technology</h3>
+        <p>Digital imaging and modern equipment for faster, more accurate, more comfortable care.</p>
+      </div>
+      <div class="why-card" data-animate data-anim="up">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 21s-7-4.35-9.5-8.9C.8 8.4 2.5 4.5 6.3 4.1c2-.2 3.6 1 5.7 3 2.1-2 3.7-3.2 5.7-3 3.8.4 5.5 4.3 3.8 8-2.5 4.55-9.5 8.9-9.5 8.9z"/></svg></div>
+        <h3>Pain-Free Treatment</h3>
+        <p>Gentle techniques and sedation options designed to keep every visit anxiety-free.</p>
+      </div>
+      <div class="why-card" data-animate data-anim="up">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/></svg></div>
+        <h3>Hygienic Environment</h3>
+        <p>Strict sterilization protocols and a spotless clinic environment for total peace of mind.</p>
+      </div>
+      <div class="why-card" data-animate data-anim="up">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9 10h4.5a1.5 1.5 0 010 3H9"/></svg></div>
+        <h3>Affordable Care</h3>
+        <p>Transparent pricing and flexible plans so quality dentistry stays within easy reach.</p>
+      </div>
+      <div class="why-card" data-animate data-anim="up">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="8" r="3.2"/><path d="M5 21c0-4 3-6.5 7-6.5s7 2.5 7 6.5"/></svg></div>
+        <h3>Personalized Treatment</h3>
+        <p>Every plan is tailored to your unique smile, comfort level, and long-term goals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reviews" id="reviews">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Patient Stories</span>
+      <h2>Loved by Our Patients</h2>
+      <div class="google-badge">
+        <span style="color:var(--orange)">★★★★★</span>
+        <span style="font-weight:700">Excellent · 527 Google Reviews</span>
+      </div>
+    </div>
+  </div>
+  <div class="review-track-wrap">
+    <div class="review-track" id="reviewTrack"></div>
+  </div>
+</section>
+
+<script id="reviewData" type="application/json">
+[
+  {"name":"Wonder Village Farm House","time":"3 months ago","color":"#0B4EA2","text":"Dr Jamal's service is amazing, I'm very satisfied with their composite filling. Neat, comfortable, and quick."},
+  {"name":"Zaibunnisa Laiq","time":"3 months ago","color":"#F7941D","text":"Got my implant done by Dr Jamal. Very thorough treatment and a great guide throughout — the whole team was so cooperative."},
+  {"name":"Faizii Mughal","time":"3 months ago","color":"#1F3F95","text":"Very satisfied with Dr Jamal's procedure. Prem Kumar is a great guy and made the whole visit easy for me."},
+  {"name":"Syed Ahmed","time":"3 months ago","color":"#0B4EA2","text":"Great customer care and the best dental service. Had scaling and polishing with Dr Zameer Hanzala — Prem Kumar guided us through best practices."},
+  {"name":"Anum Bashir","time":"3 months ago","color":"#F7941D","text":"I'm currently undergoing Dr Jamal's aligner treatment. Exceptional service from start to finish — Prem at reception is always warm, and Dr Rida was polite and attentive throughout my procedure."},
+  {"name":"Mubeen","time":"3 months ago","color":"#1F3F95","text":"Had a zirconia veneer and two zirconia crowns done, and I'm really happy with the results. Dr Jamal and his team are professional — I never once felt concerned. Would recommend to anyone, 10/10."},
+  {"name":"Ayesha Memon","time":"3 months ago","color":"#0B4EA2","text":"Great experience with my braces treatment — results are excellent. The doctor and staff were friendly and supportive the whole way through."},
+  {"name":"Maryam Saleem Moosani","time":"3 months ago","color":"#F7941D","text":"Visited on urgent basis without an appointment and was still treated with full care. Had a molar extraction done with minimal discomfort and clear aftercare instructions. Clean clinic, cooperative staff — highly recommend."},
+  {"name":"Umair Haider","time":"3 months ago","color":"#1F3F95","text":"Very optimistic treatment and guidance. Felt genuinely looked after from the first visit."}
+]
+</script>
+
+<section class="section" id="book">
+  <div class="container">
+    <div class="cta-banner" data-animate data-anim="scale">
+      <svg class="cta-float" style="width:60px; top:20px; right:80px;" viewBox="0 0 24 24" fill="none" data-float><path d="M12 3c-2.2 0-4 1.6-4 4.2 0 2.6.9 3.8.9 6.4 0 2-1 3.9-1 5.4 0 1.1.6 2 1.6 2 1.7 0 1.5-3.8 2.5-3.8s.8 3.8 2.5 3.8c1 0 1.6-.9 1.6-2 0-1.5-1-3.4-1-5.4 0-2.6.9-3.8.9-6.4C16 4.6 14.2 3 12 3z" stroke="#fff" stroke-width="1.4"/></svg>
+      <svg class="cta-float" style="width:44px; bottom:24px; left:70px;" viewBox="0 0 24 24" fill="none" data-float><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.4"/></svg>
+      <h2>Ready for a Healthier Smile?</h2>
+      <p>Book your appointment today and take the first step toward a smile you'll love to share.</p>
+      <a href="#" class="btn btn-primary" onclick="ripple(event)">Book Appointment</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <span class="logo-mark"><img src="./Dr-Jamal-H-Memon-Dentist.png.bv.webp" alt="Dr. Jamal's Dental Care logo" loading="lazy"></span>
+          <span>Dr. Jamal's Dental Care</span>
+        </div>
+        <p>Premium, gentle dental care built on trust, technology, and genuine attention to every smile.</p>
+        <div class="social-row">
+          <a href="https://www.facebook.com/drjamalhmemon" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7c0-1 .3-2 2-2h2V1.2C16.7 1 15.5 1 14 1c-3 0-5 1.8-5 5v4H6v4h3v8h4z"/></svg></a>
+          <a href="https://www.instagram.com/drjamalhussain4" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="drjamalhussain4@gmail.com" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.9-1.4A10 10 0 1012 2zm0 18.2a8.1 8.1 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#treatments">Treatments</a></li>
+          <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+92 311 1123500">+92 311 1123500</a></li>
+          <li><a href="mailto:drjamalhussain4@gmail.com">drjamalhussain4@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit Us</h4>
+        <p>Suite 12, Medical Plaza, Main Boulevard, Karachi, Pakistan</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Dr. Jamal's Dental Care. All rights reserved.</span>
+      <span>Designed with care for healthier smiles.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Build review cards
+  (function(){
+    const data = JSON.parse(document.getElementById('reviewData').textContent);
+    const track = document.getElementById('reviewTrack');
+    const initials = n => n.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+    const cardHTML = r => `
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-who">
+            <div class="review-avatar" style="background:${r.color}">${initials(r.name)}</div>
+            <div>
+              <div class="review-name">${r.name}
+                <span class="verified-tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <div class="review-time">${r.time}</div>
+            </div>
+          </div>
+          <svg class="review-google" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l6-6C34.4 5.1 29.5 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21c0-1.4-.1-2.8-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.3 18.9 12 24 12c3.1 0 5.8 1.1 8 3l6-6C34.4 5.1 29.5 3 24 3c-7.6 0-14.1 4.3-17.3 10.7z"/><path fill="#4CAF50" d="M24 45c5.3 0 10-1.8 13.6-4.9l-6.3-5.3C29.3 36.5 26.8 37 24 37c-5.3 0-9.7-3.1-11.3-7.5l-6.5 5C9.8 40.6 16.4 45 24 45z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1 2.8-2.9 5.1-5.4 6.7l6.3 5.3C39.8 37.1 43 31 43 24c0-1.4-.1-2.8-.4-3.5z"/></svg>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">${r.text}</p>
+      </div>`;
+    const html = data.map(cardHTML).join('') + data.map(cardHTML).join('');
+    track.innerHTML = html;
+  })();
+
+  // Navbar glass on scroll
+  const header = document.getElementById('header');
+  const navGlass = document.getElementById('navGlass');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Navbar entrance animation
+  gsap.set(navGlass, { opacity:0, y:-26 });
+  gsap.to(navGlass, { opacity:1, y:0, duration:1, ease:'power3.out', delay:0.15 });
+  gsap.from('.logo-mark', { rotate:-20, scale:0.6, duration:0.9, ease:'back.out(2)', delay:0.4 });
+  gsap.from('#navLinks > *', { opacity:0, y:-10, duration:0.6, stagger:0.07, ease:'power2.out', delay:0.55 });
+
+  // Mouse-follow spotlight glow on navbar
+  navGlass.addEventListener('mousemove', (e) => {
+    const r = navGlass.getBoundingClientRect();
+    navGlass.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+    navGlass.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+  });
+
+  // Magnetic hover on the nav "Book Appointment" button
+  const navCtaBtn = navGlass.querySelector('.btn-primary');
+  if (navCtaBtn) {
+    navCtaBtn.addEventListener('mousemove', (e) => {
+      const r = navCtaBtn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * 0.3;
+      const y = (e.clientY - r.top - r.height / 2) * 0.3;
+      gsap.to(navCtaBtn, { x, y, duration:0.3, ease:'power2.out' });
+    });
+    navCtaBtn.addEventListener('mouseleave', () => {
+      gsap.to(navCtaBtn, { x:0, y:0, duration:0.5, ease:'elastic.out(1,0.4)' });
+    });
+  }
+
+  // Subtle link lift on hover
+  document.querySelectorAll('#navLinks a:not(.btn)').forEach(a => {
+    a.addEventListener('mouseenter', () => gsap.to(a, { y:-2, duration:0.25, ease:'power2.out' }));
+    a.addEventListener('mouseleave', () => gsap.to(a, { y:0, duration:0.3, ease:'power2.out' }));
+  });
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Ripple effect
+  function ripple(e){
+    const btn = e.currentTarget;
+    const circle = document.createElement('span');
+    const d = Math.max(btn.clientWidth, btn.clientHeight);
+    circle.style.width = circle.style.height = d + 'px';
+    circle.style.left = (e.clientX - btn.getBoundingClientRect().left - d/2) + 'px';
+    circle.style.top = (e.clientY - btn.getBoundingClientRect().top - d/2) + 'px';
+    circle.classList.add('ripple');
+    btn.appendChild(circle);
+    setTimeout(() => circle.remove(), 600);
+  }
+
+  // Entrance animation
+  window.addEventListener('load', () => {
+    gsap.timeline()
+      .to('.hero-copy [data-animate]', { opacity:1, y:0, duration:0.9, stagger:0.12, ease:'power3.out' }, 0.1)
+      .to('.hero-visual [data-animate]', { opacity:1, scale:1, duration:1, ease:'power3.out' }, 0.3);
+  });
+
+  // Scroll reveal for the rest
+  document.querySelectorAll('[data-animate]').forEach(el => {
+    if (el.closest('.hero')) return;
+    const anim = el.dataset.anim;
+    let from = { opacity:0, y:40 };
+    if (anim === 'left') from = { opacity:0, x:-60 };
+    if (anim === 'right') from = { opacity:0, x:60 };
+    if (anim === 'scale') from = { opacity:0, scale:0.92 };
+    gsap.fromTo(el, from, {
+      opacity:1, y:0, x:0, scale:1, duration:0.9, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 88%' }
+    });
+  });
+
+  // Floating icons
+  document.querySelectorAll('[data-float]').forEach((el,i) => {
+    gsap.to(el, { y: i%2===0 ? -16 : 16, duration: 2.6 + i*0.3, repeat:-1, yoyo:true, ease:'sine.inOut' });
+  });
+
+  // Parallax blobs
+  document.querySelectorAll('[data-parallax]').forEach(el => {
+    const speed = parseFloat(el.dataset.parallax);
+    gsap.to(el, {
+      y: () => -100 * speed,
+      ease: 'none',
+      scrollTrigger: { trigger: '.hero', start:'top top', end:'bottom top', scrub:true }
+    });
+  });
+
+  // Counters
+  document.querySelectorAll('.stat-num').forEach(el => {
+    const target = parseFloat(el.dataset.count);
+    const decimal = parseInt(el.dataset.decimal || 0);
+    const suffix = el.dataset.suffix || '';
+    ScrollTrigger.create({
+      trigger: el, start:'top 90%', once:true,
+      onEnter: () => {
+        let obj = { val: 0 };
+        gsap.to(obj, {
+          val: target, duration: 2, ease:'power2.out',
+          onUpdate: () => { el.textContent = obj.val.toFixed(decimal) + suffix; }
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>
